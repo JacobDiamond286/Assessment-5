@@ -3,19 +3,19 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const {SERVER_PORT} = process.env
-const {seed, getCountries, getCities, createCity, deleteCity} = require('./controller.js')
+const {seed, getCountries, getCities, createCity, deleteCity, addCountryId} = require('./controller.js')
 
 app.use(express.json())
 app.use(cors())
 
 // DEV
-app.post('/seed', seed)
+app.post('/seed', seed, addCountryId)
 
 // COUNTRIES
-// app.get('/countries', getCountries)
+app.get('/countries', getCountries)
 
 // CITIES
-// app.post('/cities', createCity)
+app.post('/cities', createCity)
 // app.get('/cities', getCities)
 // app.delete('/cities/:id', deleteCity)
 
